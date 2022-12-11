@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Login</title>
+{% endblock meta %}
+
+{% block content %}
+<style>
+    body{
+      min-height: 100vh;
+      background: #abd699;
+    }
+  </style>
+<div class="card mx-auto text-center" style="width: 20rem;">
+  <div class="card-body">
+    <div class = "login">
+
+        <h1>Login</h1>
+    
+        <form method="POST" action="">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Username: </td>
+                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
+                </tr>
+                        
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
+                </tr>
+    
+                <tr>
+                    <td></td>
+
+                </tr>
+            </table>
+            <button class="btn bg-primary" type="submit">Login</button>
+        </form>
+    
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}     
+        <div>
+            <a href="{% url 'nobokek:show_guest' %}">
+                <button class="btn btn-outline-success" type="button">
+                    Log in as a guest
+                </button>
+              </a>
+        </div>
+        <div>
+            Belum mempunyai akun? <a href="{% url 'nobokek:register' %}">Buat Akun</a>
+        </div>
+        
+    
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
